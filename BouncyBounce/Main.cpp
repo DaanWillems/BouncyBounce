@@ -18,7 +18,7 @@ int main(int, char**) {
 
 	}
 
-	SDL_Window *win = SDL_CreateWindow("Hello World!", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
+	SDL_Window *win = SDL_CreateWindow("BouncyBounce", 100, 100, 640, 480, SDL_WINDOW_SHOWN);
 	if (win == nullptr) {
 		std::cout << "SDL_CreateWindow Error: " << SDL_GetError() << std::endl;
 		SDL_Quit();
@@ -45,7 +45,8 @@ int main(int, char**) {
 	e.textureComponent = &TextureComponent(tex);
 	e.userControlledComponent = &UserControlledComponent();
 	e.SizeComponent = &SizeComponent();
-	e.positionComponent->x = 200;
+	e.positionComponent->x = 300;
+	e.positionComponent->y = 200;
 
 	renderer.entities.push_back(&e);
 	inputSystem.entities.push_back(&e);

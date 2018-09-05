@@ -9,34 +9,10 @@ Renderer::Renderer(SDL_Renderer* ren)
 }
 
 
-//void Renderer::render(Entity* e)
-//{
-//	SDL_RenderClear(ren);
-//
-//		SDL_Texture* tex = e->getTexture();
-//		SDL_Rect dst;
-//		dst.x = obj->x;
-//		dst.y = obj->y;
-//		//Query the texture to get its width and height to use
-//		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
-//	
-//		dst.w = obj->w;
-//		dst.h = obj->h;
-//	
-//		SDL_RenderCopy(ren, tex, NULL, &dst);
-//
-//	Setup the destination rectangle to be at the position we want
-//
-//
-//	SDL_RenderPresent(ren);
-//	Take a quick break after all that hard work
-//	SDL_Delay(1000);
-//}
-
 void Renderer::update() {
+	SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
 	SDL_RenderClear(ren);
 	for (unsigned i = 0; i < entities.size(); i++) {
-	
 		SDL_Texture* tex = entities[i]->textureComponent->tex;
 		SDL_Rect dst;
 		dst.x = entities[i]->positionComponent->x;
