@@ -13,7 +13,14 @@ void Renderer::update() {
 	SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
 	SDL_RenderClear(ren);
 	for (unsigned i = 0; i < entities.size(); i++) {
-		SDL_Texture* tex = entities[i]->textureComponent->tex;
+
+		Entity* e = entities[i];
+
+		if (e->textureComponent == NULL) {
+			continue;
+		}
+
+		SDL_Texture* tex = e->textureComponent->tex;
 		SDL_Rect dst;
 		dst.x = entities[i]->positionComponent->x;
 		dst.y = entities[i]->positionComponent->y;
@@ -21,8 +28,8 @@ void Renderer::update() {
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		
 		if (entities[i]->SizeComponent != NULL) {
-			dst.h = entities[i]->SizeComponent->height;
-			dst.w = entities[i]->SizeComponent->width;
+			dst.h = e->SizeComponent->height;
+			dst.w = e->SizeComponent->width;
 		}
 
 		SDL_RenderCopy(ren, tex, NULL, &dst);

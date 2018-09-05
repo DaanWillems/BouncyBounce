@@ -125,6 +125,7 @@
     <ClCompile Include="Entity.cpp" />
     <ClCompile Include="HealthComponent.cpp" />
     <ClCompile Include="Main.cpp" />
+    <ClCompile Include="PhysicsSystem.cpp" />
     <ClCompile Include="PositionComponent.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="SizeComponent.cpp" />
@@ -133,11 +134,13 @@
     <ClCompile Include="TextureLoader.cpp" />
     <ClCompile Include="UserControlledComponent.cpp" />
     <ClCompile Include="UserInputSystem.cpp" />
+    <ClCompile Include="VelocityComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Component.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="HealthComponent.h" />
+    <ClInclude Include="PhysicsSystem.h" />
     <ClInclude Include="PositionComponent.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="SizeComponent.h" />
@@ -146,6 +149,7 @@
     <ClInclude Include="TextureLoader.h" />
     <ClInclude Include="UserControlledComponent.h" />
     <ClInclude Include="UserInputSystem.h" />
+    <ClInclude Include="VelocityComponent.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

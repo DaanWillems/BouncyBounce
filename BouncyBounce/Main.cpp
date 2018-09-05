@@ -8,6 +8,8 @@
 #include "UserControlledComponent.h"
 #include "UserInputSystem.h"
 #include "SizeComponent.h"
+#include "VelocityComponent.h"
+#include "PhysicsSystem.h"
 
 void init();
 
@@ -34,26 +36,34 @@ int main(int, char**) {
 
 	Renderer renderer = { Renderer(sdlRen) };
 	UserInputSystem inputSystem = { UserInputSystem() };
+	PhysicsSystem physicsSystem = { PhysicsSystem() };
 
 	TextureLoader texLoader = { TextureLoader(sdlRen) };
 
 	SDL_Texture* tex = texLoader.loadTexture("res/player.bmp");
 
-	Entity e = { Entity() };
+	Entity player = { Entity() };
+	player.positionComponent = &PositionComponent();
+	player.textureComponent = &TextureComponent(tex);
+	player.userControlledComponent = &UserControlledComponent();
+	player.SizeComponent = &SizeComponent();
 
-	e.positionComponent = &PositionComponent();
-	e.textureComponent = &TextureComponent(tex);
-	e.userControlledComponent = &UserControlledComponent();
-	e.SizeComponent = &SizeComponent();
-	e.positionComponent->x = 300;
-	e.positionComponent->y = 200;
+	player.velocityComponent = &VelocityComponent();
 
-	renderer.entities.push_back(&e);
-	inputSystem.entities.push_back(&e);
+	player.positionComponent->x = 300;
+	player.positionComponent->y = 200;
+
+	player.velocityComponent->dX = 1;
+	player.velocityComponent->dY = 1;
+
+	renderer.entities.push_back(&player);
+	inputSystem.entities.push_back(&player);
+	physicsSystem.entities.push_back(&player);
 
 	while (true) {
 		renderer.update();
 		inputSystem.update();
+		physicsSystem.update();
 	}
 
 	SDL_Quit();

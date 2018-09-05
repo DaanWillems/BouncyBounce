@@ -8,6 +8,7 @@
 #include "TextureComponent.h"
 #include "UserControlledComponent.h"
 #include "SizeComponent.h"
+#include "VelocityComponent.h"
 
 class Entity
 {
@@ -19,6 +20,7 @@ public:
 	TextureComponent* textureComponent;
 	UserControlledComponent* userControlledComponent;
 	SizeComponent* SizeComponent;
+	VelocityComponent* velocityComponent;
 
 	Entity();
 	~Entity();
