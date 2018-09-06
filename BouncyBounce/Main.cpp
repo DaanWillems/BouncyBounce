@@ -9,6 +9,7 @@
 #include "UserInputSystem.h"
 #include "SizeComponent.h"
 #include "VelocityComponent.h"
+#include "Assemblage.h"
 #include "PhysicsSystem.h"
 #include <vector>
 
@@ -38,21 +39,9 @@ int main(int, char**) {
 
 	SDL_Texture* tex = texLoader.loadTexture("res/player.bmp");
 
-	Entity player = { Entity() };
-	player.positionComponent = &PositionComponent();
-	player.textureComponent = &TextureComponent(tex);
-	player.userControlledComponent = &UserControlledComponent();
-	player.SizeComponent = &SizeComponent();
-	player.dragComponent = &DragComponent();
+	Assemblage assemblage = Assemblage();
+	Entity player = assemblage.createPlayer(tex);
 
-	player.dragComponent->drag = 0.85;
-	player.velocityComponent = &VelocityComponent();
-
-	player.positionComponent->x = 300;
-	player.positionComponent->y = 200;
-
-	player.velocityComponent->dX = 0;
-	player.velocityComponent->dY = 0;
 
 	//Entity p2 = *player;
 	std::vector<Entity*>entities;

@@ -1,5 +1,16 @@
-#include "UserInputSystem.h"
+#include <iostream>
 #include <SDL.h>
+#include "TextureLoader.h"
+#include "Renderer.h"
+#include "Entity.h"
+#include "PositionComponent.h"
+#include "TextureComponent.h"
+#include "UserControlledComponent.h"
+#include "UserInputSystem.h"
+#include "SizeComponent.h"
+#include "VelocityComponent.h"
+#include "PhysicsSystem.h"
+#include <vector>
 
 UserInputSystem::UserInputSystem()
 {
@@ -37,6 +48,7 @@ void UserInputSystem::update() {
 			else if (currentKeyStates[SDL_SCANCODE_SPACE])
 			{
 				
+				//entities.push_back(&player);
 			}
 		}
 	}

@@ -127,6 +127,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Assemblage.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DragComponent.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -144,6 +145,7 @@
     <ClCompile Include="VelocityComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Assemblage.h" />
     <ClInclude Include="Component.h" />
     <ClInclude Include="DragComponent.h" />
     <ClInclude Include="Entity.h" />
