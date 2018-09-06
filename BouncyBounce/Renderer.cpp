@@ -12,9 +12,9 @@ Renderer::Renderer(SDL_Renderer* ren)
 void Renderer::update() {
 	SDL_SetRenderDrawColor(ren, 255, 255, 255, 255);
 	SDL_RenderClear(ren);
-	for (unsigned i = 0; i < entities.size(); i++) {
+	for (unsigned i = 0; i < entities->size(); i++) {
 
-		Entity* e = entities[i];
+		Entity *e = entities->data()[0];
 
 		if (e->textureComponent == NULL) {
 			continue;
@@ -22,12 +22,12 @@ void Renderer::update() {
 
 		SDL_Texture* tex = e->textureComponent->tex;
 		SDL_Rect dst;
-		dst.x = entities[i]->positionComponent->x;
-		dst.y = entities[i]->positionComponent->y;
+		dst.x = e->positionComponent->x;
+		dst.y = e->positionComponent->y;
 		//Query the texture to get its width and height to use
 		SDL_QueryTexture(tex, NULL, NULL, &dst.w, &dst.h);
 		
-		if (entities[i]->SizeComponent != NULL) {
+		if (e->SizeComponent != NULL) {
 			dst.h = e->SizeComponent->height;
 			dst.w = e->SizeComponent->width;
 		}

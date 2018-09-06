@@ -7,7 +7,7 @@ class System
 {
 public:
 
-	std::vector<Entity*>entities;
+	std::vector<Entity*>*entities;
 
 	System();
 

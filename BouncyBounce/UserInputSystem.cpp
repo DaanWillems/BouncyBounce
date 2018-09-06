@@ -7,11 +7,12 @@ UserInputSystem::UserInputSystem()
 }
 
 void UserInputSystem::update() {
-	for (unsigned i = 0; i < entities.size(); i++) {
-		if (entities[i]->userControlledComponent != NULL) {
-			SDL_Event e;
+	for (unsigned i = 0; i < entities->size(); i++) {
+		Entity *e = entities->data()[0];
+		if (e->userControlledComponent != NULL) {
+			SDL_Event event;
 			/*! updates the array of keystates */
-			while ((SDL_PollEvent(&e)) != 0)
+			while ((SDL_PollEvent(&event)) != 0)
 			{
 
 			}
@@ -19,21 +20,24 @@ void UserInputSystem::update() {
 			const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
 			if (currentKeyStates[SDL_SCANCODE_W])
 			{
-				entities[i]->velocityComponent->dY -= 1;
+				e->velocityComponent->dY -= 1;
 			}
 			else if (currentKeyStates[SDL_SCANCODE_S])
 			{
-				entities[i]->velocityComponent->dY += 1;
+				e->velocityComponent->dY += 1;
 			}
 			if (currentKeyStates[SDL_SCANCODE_A])
 			{
-				entities[i]->velocityComponent->dX -= 1;
+				e->velocityComponent->dX -= 1;
 			}
 			else if (currentKeyStates[SDL_SCANCODE_D])
 			{
-				entities[i]->velocityComponent->dX += 1;
+				e->velocityComponent->dX += 1;
 			}
-
+			else if (currentKeyStates[SDL_SCANCODE_SPACE])
+			{
+				
+			}
 		}
 	}
 }

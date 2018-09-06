@@ -8,9 +8,9 @@ PhysicsSystem::PhysicsSystem()
 
 void PhysicsSystem::update()
 {
-	for (unsigned i = 0; i < entities.size(); i++) {
+	for (unsigned i = 0; i < entities->size(); i++) {
 
-		Entity* e = entities[i];
+		Entity *e = entities->data()[0];
 
 		if (e->velocityComponent != NULL) {
 			std::cout << e->velocityComponent->dX << std::endl;

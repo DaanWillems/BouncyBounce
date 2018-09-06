@@ -10,6 +10,7 @@
 #include "SizeComponent.h"
 #include "VelocityComponent.h"
 #include "PhysicsSystem.h"
+#include <vector>
 
 void init();
 
@@ -33,11 +34,6 @@ int main(int, char**) {
 		SDL_Quit();
 	}
 
-
-	Renderer renderer = { Renderer(sdlRen) };
-	UserInputSystem inputSystem = { UserInputSystem() };
-	PhysicsSystem physicsSystem = { PhysicsSystem() };
-
 	TextureLoader texLoader = { TextureLoader(sdlRen) };
 
 	SDL_Texture* tex = texLoader.loadTexture("res/player.bmp");
@@ -59,10 +55,17 @@ int main(int, char**) {
 	player.velocityComponent->dY = 0;
 
 	//Entity p2 = *player;
+	std::vector<Entity*>entities;
 
-	renderer.entities.push_back(&player);
-	inputSystem.entities.push_back(&player);
-	physicsSystem.entities.push_back(&player);
+	entities.push_back(&player);
+
+	Renderer renderer = { Renderer(sdlRen) };
+	UserInputSystem inputSystem = { UserInputSystem() };
+	PhysicsSystem physicsSystem = { PhysicsSystem() };
+
+	renderer.entities = &entities;
+	physicsSystem.entities = &entities;
+	inputSystem.entities = &entities;
 
 	while (true) {
 		renderer.update();
