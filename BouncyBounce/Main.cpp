@@ -47,14 +47,18 @@ int main(int, char**) {
 	player.textureComponent = &TextureComponent(tex);
 	player.userControlledComponent = &UserControlledComponent();
 	player.SizeComponent = &SizeComponent();
+	player.dragComponent = &DragComponent();
 
+	player.dragComponent->drag = 0.85;
 	player.velocityComponent = &VelocityComponent();
 
 	player.positionComponent->x = 300;
 	player.positionComponent->y = 200;
 
-	player.velocityComponent->dX = 1;
-	player.velocityComponent->dY = 1;
+	player.velocityComponent->dX = 0;
+	player.velocityComponent->dY = 0;
+
+	//Entity p2 = *player;
 
 	renderer.entities.push_back(&player);
 	inputSystem.entities.push_back(&player);

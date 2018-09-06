@@ -7,8 +7,8 @@ class VelocityComponent : public Component
 {
 public:
 
-	int dX;
-	int dY;
+	double dX;
+	double dY;
 
 	VelocityComponent();
 	~VelocityComponent();

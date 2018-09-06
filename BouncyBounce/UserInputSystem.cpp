@@ -19,19 +19,19 @@ void UserInputSystem::update() {
 			const Uint8* currentKeyStates = SDL_GetKeyboardState(NULL);
 			if (currentKeyStates[SDL_SCANCODE_W])
 			{
-				entities[i]->positionComponent->y -= 2;
+				entities[i]->velocityComponent->dY -= 1;
 			}
 			else if (currentKeyStates[SDL_SCANCODE_S])
 			{
-				entities[i]->positionComponent->y += 2;
+				entities[i]->velocityComponent->dY += 1;
 			}
 			if (currentKeyStates[SDL_SCANCODE_A])
 			{
-				entities[i]->positionComponent->x -= 2;
+				entities[i]->velocityComponent->dX -= 1;
 			}
 			else if (currentKeyStates[SDL_SCANCODE_D])
 			{
-				entities[i]->positionComponent->x += 2;
+				entities[i]->velocityComponent->dX += 1;
 			}
 
 		}

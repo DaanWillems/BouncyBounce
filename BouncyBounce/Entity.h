@@ -9,6 +9,7 @@
 #include "UserControlledComponent.h"
 #include "SizeComponent.h"
 #include "VelocityComponent.h"
+#include "DragComponent.h"
 
 class Entity
 {
@@ -21,6 +22,7 @@ public:
 	UserControlledComponent* userControlledComponent;
 	SizeComponent* SizeComponent;
 	VelocityComponent* velocityComponent;
+	DragComponent* dragComponent;
 
 	Entity();
 	~Entity();

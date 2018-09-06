@@ -5,8 +5,8 @@
 class PositionComponent: public Component
 {
 public:
-	int x;
-	int y;
+	double x;
+	double y;
 
 	PositionComponent();
 	~PositionComponent();
