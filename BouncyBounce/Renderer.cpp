@@ -14,7 +14,7 @@ void Renderer::update() {
 	SDL_RenderClear(ren);
 	for (unsigned i = 0; i < entities->size(); i++) {
 
-		Entity *e = entities->data()[0];
+		Entity *e = entities->data()[i];
 
 		if (e->textureComponent == NULL) {
 			continue;
@@ -33,9 +33,8 @@ void Renderer::update() {
 		}
 
 		SDL_RenderCopy(ren, tex, NULL, &dst);
-	
-		SDL_RenderPresent(ren);
 	}
+	SDL_RenderPresent(ren);
 }
 
 

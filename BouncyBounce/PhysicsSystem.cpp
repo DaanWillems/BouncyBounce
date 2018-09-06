@@ -10,7 +10,13 @@ void PhysicsSystem::update()
 {
 	for (unsigned i = 0; i < entities->size(); i++) {
 
-		Entity *e = entities->data()[0];
+		Entity *e = entities->data()[i];
+
+		if (e->userControlledComponent == NULL && e->velocityComponent->dX == 0) {
+			entities->erase(entities->begin()+i);
+			delete e;
+			continue;
+		}
 
 		if (e->velocityComponent != NULL) {
 			std::cout << e->velocityComponent->dX << std::endl;
@@ -30,6 +36,7 @@ void PhysicsSystem::update()
 			}
 		}
 	}
+	entities->shrink_to_fit();
 }
 
 

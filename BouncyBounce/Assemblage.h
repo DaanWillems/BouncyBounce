@@ -9,9 +9,11 @@ public:
 
 	TextureLoader* textureLoader;
 
-	Assemblage();
+	Assemblage(TextureLoader* textureLoader);
 
-	Entity createPlayer(SDL_Texture* tex);
+	Entity* createPlayer();
+
+	Entity* createProjectile(double x, double y, double dX, double dY);
 
 	~Assemblage();
 };

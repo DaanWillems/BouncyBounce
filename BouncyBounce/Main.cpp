@@ -35,21 +35,18 @@ int main(int, char**) {
 		SDL_Quit();
 	}
 
-	TextureLoader texLoader = { TextureLoader(sdlRen) };
+	TextureLoader* texLoader = new TextureLoader(sdlRen);
 
-	SDL_Texture* tex = texLoader.loadTexture("res/player.bmp");
-
-	Assemblage assemblage = Assemblage();
-	Entity player = assemblage.createPlayer(tex);
-
+	Assemblage assemblage = Assemblage(texLoader);
 
 	//Entity p2 = *player;
 	std::vector<Entity*>entities;
 
-	entities.push_back(&player);
+	Entity* player = assemblage.createPlayer();
+	entities.push_back(player);
 
 	Renderer renderer = { Renderer(sdlRen) };
-	UserInputSystem inputSystem = { UserInputSystem() };
+	UserInputSystem inputSystem = { UserInputSystem(&assemblage) };
 	PhysicsSystem physicsSystem = { PhysicsSystem() };
 
 	renderer.entities = &entities;
